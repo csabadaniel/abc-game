@@ -25,24 +25,24 @@ class Game extends Component {
   render() {
     return (
       <div id="game">
-        <div id="board" className="w3-display-middle" style={{ width: 600 }}>
+        <div id="board" className="w3-display-middle" style={{ width: 304 }}>
           <div id="question" className="w3-container w3-red">
             <p>{ qna[0].question }</p>
           </div>
           <div className="w3-cell-row">
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
-              <img src={ (qna[0].answers[0] + '.jpg') }/>
+              <img src={ (qna[0].answers[0] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
-              <img src={ (qna[0].answers[1] + '.jpg') }/>
+              <img src={ (qna[0].answers[1] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
           </div>
           <div className="w3-cell-row">
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
-              <img src={ (qna[0].answers[2] + '.jpg') }/>
+              <img src={ (qna[0].answers[2] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
-              <img src={ (qna[0].answers[3] + '.jpg') }/>
+              <img src={ (qna[0].answers[3] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
           </div>
           <div className="w3-container w3-red">
