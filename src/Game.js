@@ -13,7 +13,10 @@ const QUESTION = 'question';
 const WAIT = 'wait';
 const ANSWER = 'answer';
 const SCORE = 'score';
+const OUTRO = 'outro';
 const REPLAY = 'replay';
+
+const MAX_ROUNDS = 5;
 
 class Game extends Component {
 
@@ -49,13 +52,16 @@ class Game extends Component {
     } else if (this.state.state == QUESTION) {
       this.setState({ state: WAIT});
     } else if (this.state.state == SCORE) {
-      if (this.state.score.length < 10) {
+      if (this.state.score.length < MAX_ROUNDS) {
         this.setState({ state: QUESTION });
         this.nextQuestion();
       } else {
-        this.setState({ state: REPLAY });
-        this.showReplay();
+        this.setState({ state: OUTRO });
+        this.audio.src = sounds.applause;
+        this.audio.play();
       }
+    } else if (this.state.state == OUTRO) {
+        this.showReplay();
     }
   }
 
@@ -70,8 +76,12 @@ class Game extends Component {
     this.setState({ answers, correct, letter });
   };
 
+  outro() {
+
+  }
+
   showReplay() {
-    if (this.state.score.length == 10)
+    if (this.state.score.length == MAX_ROUNDS)
       this.setState({score: [...this.state.score].concat([
         <i className="material-icons" key={this.state.score.length} onClick={this.reset.bind(this)}>replay</i>
       ])});
@@ -79,7 +89,7 @@ class Game extends Component {
 
   handleClick(id, e) {
     if (this.state.state == WAIT) {
-      if (this.state.score.length < 10) {
+      if (this.state.score.length < MAX_ROUNDS) {
         let correct = (id == this.state.correct);
         this.setState(state => ({
           score: [...state.score]

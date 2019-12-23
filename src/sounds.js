@@ -27,11 +27,13 @@ import letter_zebra from './letter_zebra.mp3';
 
 import correct from './correct.mp3';
 import wrong from './wrong.mp3';
+import applause from './applause.mp3';
 
 export default {
   intro,
   animals: {cat, elephant, frog, giraffe, horse, kangaroo, lion, mouse, snake, turtle, whale, zebra},
   letters: {cat: letter_cat, elephant: letter_elephant, frog: letter_frog, giraffe: letter_giraffe, horse: letter_horse, kangaroo: letter_kangaroo, lion: letter_lion, mouse: letter_mouse, snake: letter_snake, turtle: letter_turtle, whale: letter_whale, zebra: letter_zebra},
   correct,
-  wrong
+  wrong,
+  applause
 }
