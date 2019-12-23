@@ -6,15 +6,17 @@ const animals = ['cat', 'elephant', 'frog', 'giraffe', 'horse', 'kangaroo', 'lio
 const letters = animals.map((name) => name.slice(0, 1).toUpperCase);
 
 class Game extends Component {
+
   constructor() {
     super();
 
-    this.state = {
+    this.initialState = {
       answers: ['', '', '', ''],
       correct: 0,
       letter: '',
       score: []
     };
+    this.state = {...this.initialState};
     this.nextQuestion.bind(this);
     this.showReplay.bind(this);
     this.reset.bind(this);
@@ -58,12 +60,7 @@ class Game extends Component {
   }
 
   reset() {
-    this.setState({
-      answers: ['', '', '', ''],
-      correct: 0,
-      letter: '',
-      score: []
-    });
+    this.setState({...this.initialState});
     this.nextQuestion();
   }
 
