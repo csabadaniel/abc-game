@@ -13,7 +13,8 @@ class Game extends Component {
       answers: ['', '', '', ''],
       correct: 0,
       letter: '',
-      score: ''
+      score: [],
+      round: -1
     };
     this.nextQuestion.bind(this);
   };
@@ -27,16 +28,17 @@ class Game extends Component {
     let answers = [0, 0, 0, 0].map(() => myAnimals.splice(Math.floor(Math.random() * myAnimals.length), 1)[0]);
     let correct = Math.floor(Math.random() * 4);
     let letter = answers[correct].slice(0, 1).toUpperCase();
+    let round = this.state.round ++;
     this.setState({ answers, correct, letter });
   };
 
   handleClick(id, e) {
     this.setState(state => ({
-      score: state.score.concat(
+      score: [...state.score].concat([
         id == this.state.correct ?
-        '+' :
-        '-'
-      )
+        <i class="material-icons">star</i> :
+        <i class="material-icons">star_border</i>
+      ])
     }));
     this.nextQuestion();
   }
@@ -64,7 +66,7 @@ class Game extends Component {
               <img src={ (this.state.answers[3] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
           </div>
-          <div className="w3-container w3-red">
+          <div className="w3-container w3-text-red" style={{ height: 56 }}>
             <p>{ this.state.score }</p>
           </div>
         </div>
