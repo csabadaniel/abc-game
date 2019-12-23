@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import qna from './qna.json';
 import images from './images';
+import sounds from './sounds';
 
 const animals = ['cat', 'elephant', 'frog', 'giraffe', 'horse', 'kangaroo', 'lion', 'mouse', 'snake', 'turtle', 'whale', 'zebra'];
 const letters = animals.map((name) => name.slice(0, 1).toUpperCase);
