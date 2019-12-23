@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import qna from './qna.json';
 import images from './images';
 
+const animals = ['cat', 'elephant', 'frog', 'giraffe', 'horse', 'kangaroo', 'lion', 'mouse', 'snake', 'turtle', 'whale', 'zebra'];
+const letters = animals.map((name) => name.slice(0, 1).toUpperCase);
+
 class Game extends Component {
   constructor() {
     super();
