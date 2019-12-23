@@ -17,6 +17,7 @@ class Game extends Component {
     };
     this.nextQuestion.bind(this);
     this.showReplay.bind(this);
+    this.reset.bind(this);
   };
 
   componentDidMount() {
@@ -48,12 +49,22 @@ class Game extends Component {
             <i className="material-icons" key={this.state.score.length}>star_border</i>
           ]).concat(
             this.state.score.length == 9 ?
-            [ <i className="material-icons" key={this.state.score.length + 1}>replay</i> ] :
+            [ <i className="material-icons" key={this.state.score.length + 1} onClick={this.reset.bind(this)}>replay</i> ] :
             []
           )
       }));
     if (this.state.score.length < 9) this.nextQuestion();
     this.showReplay();
+  }
+
+  reset() {
+    this.setState({
+      answers: ['', '', '', ''],
+      correct: 0,
+      letter: '',
+      score: []
+    });
+    this.nextQuestion();
   }
 
   render() {
