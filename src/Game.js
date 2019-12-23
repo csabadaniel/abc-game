@@ -13,10 +13,10 @@ class Game extends Component {
       answers: ['', '', '', ''],
       correct: 0,
       letter: '',
-      score: [],
-      round: -1
+      score: []
     };
     this.nextQuestion.bind(this);
+    this.showReplay.bind(this);
   };
 
   componentDidMount() {
@@ -28,19 +28,32 @@ class Game extends Component {
     let answers = [0, 0, 0, 0].map(() => myAnimals.splice(Math.floor(Math.random() * myAnimals.length), 1)[0]);
     let correct = Math.floor(Math.random() * 4);
     let letter = answers[correct].slice(0, 1).toUpperCase();
-    let round = this.state.round ++;
     this.setState({ answers, correct, letter });
   };
 
+  showReplay() {
+    if (this.state.score.length == 10)
+      this.setState({score: [...this.state.score].concat([
+        <i className="material-icons" key={this.state.score.length}>replay</i>
+      ])});
+  }
+
   handleClick(id, e) {
-    this.setState(state => ({
-      score: [...state.score].concat([
-        id == this.state.correct ?
-        <i class="material-icons">star</i> :
-        <i class="material-icons">star_border</i>
-      ])
-    }));
-    this.nextQuestion();
+    if (this.state.score.length < 10)
+      this.setState(state => ({
+        score: [...state.score]
+          .concat([
+            id == this.state.correct ?
+            <i className="material-icons" key={this.state.score.length}>star</i> :
+            <i className="material-icons" key={this.state.score.length}>star_border</i>
+          ]).concat(
+            this.state.score.length == 9 ?
+            [ <i className="material-icons" key={this.state.score.length + 1}>replay</i> ] :
+            []
+          )
+      }));
+    if (this.state.score.length < 9) this.nextQuestion();
+    this.showReplay();
   }
 
   render() {
