@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import qna from './qna.json';
+import elephant from './elephant.jpg';
+import zebra from './zebra.jpg';
+import lion from './lion.jpg';
+import turtle from './turtle.jpg';
 
 class Game extends Component {
   constructor() {
@@ -24,24 +28,24 @@ class Game extends Component {
   render() {
     return (
       <div id="game">
-        <div id="board" className="w3-display-middle w3-yellow" style={{ width: 600 }}>
+        <div id="board" className="w3-display-middle" style={{ width: 600 }}>
           <div id="question" className="w3-container w3-red">
             <p>{ qna[0].question }</p>
           </div>
           <div className="w3-cell-row">
-            <div className="w3-container w3-cell w3-button w3-hover-red" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
-              <p>{ qna[0].answers[0] }</p>
+            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
+              <img src={ (qna[0].answers[0] + '.jpg') }/>
             </div>
-            <div className="w3-container w3-cell w3-button w3-hover-red" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
-              <p>{ qna[0].answers[1] }</p>
+            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
+              <img src={ (qna[0].answers[1] + '.jpg') }/>
             </div>
           </div>
           <div className="w3-cell-row">
-            <div className="w3-container w3-cell w3-button w3-hover-red" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
-              <p>{ qna[0].answers[2] }</p>
+            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
+              <img src={ (qna[0].answers[2] + '.jpg') }/>
             </div>
-            <div className="w3-container w3-cell w3-button w3-hover-red" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
-              <p>{ qna[0].answers[3] }</p>
+            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
+              <img src={ (qna[0].answers[3] + '.jpg') }/>
             </div>
           </div>
           <div className="w3-container w3-red">

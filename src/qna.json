@@ -1,7 +1,7 @@
 [
   {
     "question": "Find an animal with letter E",
-    "answers": ["Elephant", "Zebra", "Lion", "Tiger"],
+    "answers": ["elephant", "zebra", "lion", "turtle"],
     "correct": 0
   }
 ]
