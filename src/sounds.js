@@ -31,7 +31,7 @@ import wrong from './wrong.mp3';
 export default {
   intro,
   animals: {cat, elephant, frog, giraffe, horse, kangaroo, lion, mouse, snake, turtle, whale, zebra},
-  letters: {letter_cat, letter_elephant, letter_frog, letter_giraffe, letter_horse, letter_kangaroo, letter_lion, letter_mouse, letter_snake, letter_turtle, letter_whale, letter_zebra},
+  letters: {cat: letter_cat, elephant: letter_elephant, frog: letter_frog, giraffe: letter_giraffe, horse: letter_horse, kangaroo: letter_kangaroo, lion: letter_lion, mouse: letter_mouse, snake: letter_snake, turtle: letter_turtle, whale: letter_whale, zebra: letter_zebra},
   correct,
   wrong
 }
