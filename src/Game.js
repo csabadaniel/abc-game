@@ -17,6 +17,9 @@ class Game extends Component {
       letter: '',
       score: []
     };
+
+    this.audio = new Audio();
+
     this.state = {...this.initialState};
     this.nextQuestion.bind(this);
     this.showReplay.bind(this);
@@ -25,6 +28,8 @@ class Game extends Component {
 
   componentDidMount() {
     this.nextQuestion();
+    this.audio.src = sounds.intro;
+    this.audio.play();
   };
 
   nextQuestion() {
@@ -70,7 +75,7 @@ class Game extends Component {
       <div id="game">
         <div id="board" className="w3-display-middle" style={{ width: 304 }}>
           <div id="question" className="w3-container w3-red">
-            <p>Find an animal with letter { this.state.letter }</p>
+            <p>Find an animal with the letter { this.state.letter }</p>
           </div>
           <div className="w3-cell-row">
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
