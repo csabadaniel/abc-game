@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import qna from './qna.json';
-import elephant from './elephant.jpg';
-import zebra from './zebra.jpg';
-import lion from './lion.jpg';
-import turtle from './turtle.jpg';
+import images from './images';
 
 class Game extends Component {
   constructor() {
