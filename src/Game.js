@@ -10,19 +10,35 @@ class Game extends Component {
     super();
 
     this.state = {
-      nextQuestion: 0,
-      score: 'Score: '
-    }
-  }
+      answers: ['', '', '', ''],
+      correct: 0,
+      letter: '',
+      score: ''
+    };
+    this.nextQuestion.bind(this);
+  };
+
+  componentDidMount() {
+    this.nextQuestion();
+  };
+
+  nextQuestion() {
+    let myAnimals = [...animals];
+    let answers = [0, 0, 0, 0].map(() => myAnimals.splice(Math.floor(Math.random() * myAnimals.length), 1)[0]);
+    let correct = Math.floor(Math.random() * 4);
+    let letter = answers[correct].slice(0, 1).toUpperCase();
+    this.setState({ answers, correct, letter });
+  };
 
   handleClick(id, e) {
     this.setState(state => ({
       score: state.score.concat(
-        id == qna[state.nextQuestion].correct ?
+        id == this.state.correct ?
         '+' :
         '-'
       )
     }));
+    this.nextQuestion();
   }
 
   render() {
@@ -30,22 +46,22 @@ class Game extends Component {
       <div id="game">
         <div id="board" className="w3-display-middle" style={{ width: 304 }}>
           <div id="question" className="w3-container w3-red">
-            <p>{ qna[0].question }</p>
+            <p>Find an animal with letter { this.state.letter }</p>
           </div>
           <div className="w3-cell-row">
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
-              <img src={ (qna[0].answers[0] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
+              <img src={ (this.state.answers[0] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
-              <img src={ (qna[0].answers[1] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
+              <img src={ (this.state.answers[1] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
           </div>
           <div className="w3-cell-row">
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
-              <img src={ (qna[0].answers[2] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
+              <img src={ (this.state.answers[2] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
             <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
-              <img src={ (qna[0].answers[3] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
+              <img src={ (this.state.answers[3] + '.jpg') } style={{ width: 'auto', height: 90 }}/>
             </div>
           </div>
           <div className="w3-container w3-red">
