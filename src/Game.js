@@ -33,18 +33,18 @@ class Game extends Component {
             <p>{ qna[0].question }</p>
           </div>
           <div className="w3-cell-row">
-            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
+            <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 0)}>
               <img src={ (qna[0].answers[0] + '.jpg') }/>
             </div>
-            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
+            <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 1)}>
               <img src={ (qna[0].answers[1] + '.jpg') }/>
             </div>
           </div>
           <div className="w3-cell-row">
-            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
+            <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 2)}>
               <img src={ (qna[0].answers[2] + '.jpg') }/>
             </div>
-            <div className="w3-container w3-cell w3-button" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
+            <div className="w3-container w3-cell" style={{width: '50%'}} onClick={this.handleClick.bind(this, 3)}>
               <img src={ (qna[0].answers[3] + '.jpg') }/>
             </div>
           </div>
