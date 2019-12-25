@@ -28,7 +28,7 @@ class Game extends Component {
       correct: 0,
       letter: '',
       score: [],
-      state: INTRO
+      state: INIT
     };
 
     this.audio = new Audio();
@@ -40,9 +40,6 @@ class Game extends Component {
   };
 
   componentDidMount() {
-    this.audio.src = sounds.intro;
-    this.audio.play();
-    this.audio.onended = this.soundEnded.bind(this);
   };
 
   soundEnded() {
@@ -70,7 +67,6 @@ class Game extends Component {
     let answers = [0, 0, 0, 0].map(() => myAnimals.splice(Math.floor(Math.random() * myAnimals.length), 1)[0]);
     let correct = Math.floor(Math.random() * 4);
     let letter = answers[correct].slice(0, 1).toUpperCase();
-    console.log(sounds.letters[answers[correct]]);
     this.audio.src = sounds.letters[answers[correct]];
     this.audio.play();
     this.setState({ answers, correct, letter });
@@ -113,10 +109,20 @@ class Game extends Component {
     this.nextQuestion();
   }
 
+  intro() {
+    this.setState({ state: INTRO });
+    this.audio.src = sounds.intro;
+    this.audio.play();
+    this.audio.onended = this.soundEnded.bind(this);
+  }
+
   render() {
     return (
       <div id="game">
-        <div id="board" className="w3-display-middle" style={{ width: 304, display: (this.state.state == INTRO ? 'none' : 'block') }}>
+        <div id="play" className="w3-display-middle" style={{ width: 304, display: (this.state.state != INIT ? 'none' : 'block') }}>
+          <i className="material-icons" onClick={this.intro.bind(this)}>play_circle_filled</i>
+        </div>
+        <div id="board" className="w3-display-middle" style={{ width: 304, display: ([INIT, INTRO].includes(this.state.state) ? 'none' : 'block') }}>
           <div id="question" className="w3-container w3-red">
             <p>Find an animal with the letter { this.state.letter }</p>
           </div>
